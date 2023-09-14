@@ -23,10 +23,10 @@ while getopts 'r:d:t:p:h' opt; do
       esac
       ;;
     d)
-      if [[ ${OPTARG} = [0-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] ]]; then
+      if [[ ${OPTARG} = [0-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] || ${OPTARG} = [0-9][0-9][0-9][0-9]-[0-1][0-9] || ${OPTARG} = [0-9][0-9][0-9][0-9] ]]; then
         report_filter='.data[] | select ( .["time-created"] | contains("'"${OPTARG}"'") ) | .name'
       else
-        echo 'Error: the date format is incorrect, please use the format YYYY-MM-DD'
+        echo 'Error: the date format is incorrect, please use the format YYYY-MM-DD or YYYY-MM or YYYY'
         echo 'Usage: $(basename $0) [-r usage|cost ] [-d date] [-t tenancy ocid] [-p profile]'
         exit 1;
       fi
