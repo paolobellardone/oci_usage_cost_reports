@@ -17,7 +17,7 @@ while getopts 'r:d:t:p:h' opt; do
           ;;
         *)
           echo 'Error: the allowed values for -r are usage|cost'
-          echo 'Usage: $(basename $0) [-r usage|cost ] [-d date] [-t tenancy ocid] [-p profile]'
+          echo 'Usage:' $(basename "$(readlink -f "$0")")  '[-r usage|cost ] [-d date] [-t tenancy ocid] [-p profile]'
           exit 1;
           ;;
       esac
@@ -27,7 +27,7 @@ while getopts 'r:d:t:p:h' opt; do
         report_filter='.data[] | select ( .["time-created"] | contains("'"${OPTARG}"'") ) | .name'
       else
         echo 'Error: the date format is incorrect, please use the format YYYY-MM-DD or YYYY-MM or YYYY'
-        echo 'Usage: $(basename $0) [-r usage|cost ] [-d date] [-t tenancy ocid] [-p profile]'
+        echo 'Usage:' $(basename "$(readlink -f "$0")")  '[-r usage|cost ] [-d date] [-t tenancy ocid] [-p profile]'
         exit 1;
       fi
       ;;
@@ -38,11 +38,11 @@ while getopts 'r:d:t:p:h' opt; do
       profile_name=${OPTARG}
       ;;
     h)
-      echo 'Usage: $(basename $0) [-r usage|cost ] [-d date] [-t tenancy ocid] [-p profile]'
+      echo 'Usage:' $(basename "$(readlink -f "$0")")  '[-r usage|cost ] [-d date] [-t tenancy ocid] [-p profile]'
       exit 1
       ;;
     ?)
-      echo 'Usage: $(basename $0) [-r usage|cost ] [-d date] [-t tenancy ocid] [-p profile]'
+      echo 'Usage:' $(basename "$(readlink -f "$0")")  '[-r usage|cost ] [-d date] [-t tenancy ocid] [-p profile]'
       exit 1
       ;;
   esac
