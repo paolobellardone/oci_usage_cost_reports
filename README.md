@@ -3,6 +3,7 @@ A shell script to download the usage and costs reports from OCI tenancy
 Developed and tested on Mac, it should work also on Linux and hopefully on Windows Linux Subsystem (not tested)
 
 ### Prerequisites
+- Install jq from https://jqlang.github.io/jq/download/
 - oci-cli installed and configured (https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm)
 - OCI policies to access to the reports (https://docs.oracle.com/en-us/iaas/Content/Billing/Concepts/usagereportsoverview.htm)
 - Copy the script oci_reports_download.sh into a directory of your choice, ideally in your path
